@@ -3,6 +3,8 @@
 Aplicação para checar se o endpoint está retornando 200.
 
 ```
+#Dependencias
+pip install sqlite3
 
 #Cadastrar Sites
 sqlite3 sites_processados
