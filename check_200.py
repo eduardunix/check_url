@@ -20,18 +20,16 @@ lista = lista_de_sites.fetchall()
 for coluna in lista:
     nome = coluna[0]
     url = coluna[1]
-    print(nome)
     consulta = cur.execute('SELECT * FROM sites where url = ?', (url,))
     resultado = cur.fetchone()
-    print(resultado)
-    if requests.get(url).status_code == 200:
+    if requests.get(url, verify=False).status_code == 200:
         print(f"a aplicação {nome} está no ar")
     else:
         if not resultado:
             print(f"a aplicação {nome} está fora do ar")
             mensagem = f"a aplicação {nome} está fora do ar"
             url_bot = f"https://api.telegram.org/bot{token}/sendMessage?chat_id={id_canal}&text={mensagem}"
-            print(requests.get(url_bot).json())
+            requests.get(url_bot).json()
             cur.execute('INSERT INTO sites (url) VALUES (?)', (url,))
             con.commit()
 con.close()
