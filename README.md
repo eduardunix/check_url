@@ -1,6 +1,6 @@
 #Sobre
 
-Aplicação para checar se o endpoint está retornando 200...
+Aplicação para checar se o endpoint está retornando 200.
 
 ```
 #Dependencias
